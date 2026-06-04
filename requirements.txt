@@ -1,0 +1,35 @@
+python-dotenv
+pandas 
+numpy
+scikit-learn
+certifi
+dill
+pyaml
+mlflow
+fastapi
+uvicorn
+python-multipart
+seaborn
+streamlit
+ipykernel
+
+# Core Deep Learning
+torch
+torchvision
+torchaudio
+
+# NLP & Transformers
+transformers
+datasets
+tokenizers
+accelerate
+
+# NLP Utilities
+emoji
+nltk
+regex
+
+# ONNX Optimization
+onnx
+onnxruntime
+optimum
