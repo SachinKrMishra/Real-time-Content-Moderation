@@ -1,2 +1,17 @@
-myenv
-raw_data
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual Environment
+myenv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Dataset
+raw_data/
+
+*.pyc

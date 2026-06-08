@@ -13,6 +13,9 @@ seaborn
 streamlit
 ipykernel
 
+## For multi-label classification -- preserves the distribution of all labels simultaneously
+iterative-stratification
+
 # Core Deep Learning
 torch
 torchvision
