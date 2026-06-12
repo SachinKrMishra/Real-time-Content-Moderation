@@ -12,6 +12,7 @@ import sys
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from iterstrat.ml_stratifiers import MultilabelStratifiedShuffleSplit
+from src.utils.main_utils import validate_multilabel_split
 
 class DataIngestion:
     def __init__(self, data_ingestion_config: DataIngestionConfig):
@@ -31,7 +32,7 @@ class DataIngestion:
 
             df = pd.read_csv(file_path)
 
-            df = df.drop(columns=['id'])
+            df = df.drop(columns=['id'], errors='ignore')
 
             logging.info(f"Dataset loaded successfully with shape {df.shape}")
 
@@ -72,6 +73,17 @@ class DataIngestion:
 
             train_set = dataframe.iloc[train_idx]
             test_set = dataframe.iloc[test_idx]
+
+            split_validation_df = validate_multilabel_split(train_set, test_set)
+            logging.info(f"\n{split_validation_df.to_string(index=False)}")
+
+            max_difference = split_validation_df["difference"].max()
+
+            if max_difference > 0.5:
+                raise Exception(
+                    f"Split validation failed. "
+                    f"Maximum label difference = {max_difference}%"
+                )    
 
             logging.info(f"Train shape: {train_set.shape}")
 

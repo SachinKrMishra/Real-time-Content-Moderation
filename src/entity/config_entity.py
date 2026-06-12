@@ -63,3 +63,22 @@ class DataIngestionConfig:
 
         ## Random State
         self.random_state: int = training_pipeline.RANDOM_STATE
+
+class DataValidationConfig:
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
+
+        self.data_validation_dir = os.path.join(
+            training_pipeline_config.artifact_dir,
+            training_pipeline.DATA_VALIDATION_DIR_NAME
+        )
+
+        self.validation_report_file_path = os.path.join(
+            self.data_validation_dir,
+            training_pipeline.DATA_VALIDATION_REPORT_DIR,
+            training_pipeline.DATA_VALIDATION_REPORT_FILE_NAME
+        )
+
+        self.validation_status_file_path = os.path.join(
+            self.data_validation_dir,
+            training_pipeline.DATA_VALIDATION_STATUS_FILE_NAME
+        )

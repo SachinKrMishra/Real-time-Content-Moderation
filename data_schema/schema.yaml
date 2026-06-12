@@ -1,0 +1,48 @@
+columns:
+  comment_text: object
+  toxic: int64
+  severe_toxic: int64
+  obscene: int64
+  threat: int64
+  insult: int64
+  identity_hate: int64
+
+target_columns:
+  - toxic
+  - severe_toxic
+  - obscene
+  - threat
+  - insult
+  - identity_hate
+
+text_column: comment_text
+
+domain_values:
+  toxic: [0, 1]
+  severe_toxic: [0, 1]
+  obscene: [0, 1]
+  threat: [0, 1]
+  insult: [0, 1]
+  identity_hate: [0, 1]
+
+required_columns:
+  - comment_text
+  - toxic
+  - severe_toxic
+  - obscene
+  - threat
+  - insult
+  - identity_hate
+
+numerical_columns:
+  - toxic
+  - severe_toxic
+  - obscene
+  - threat
+  - insult
+  - identity_hate
+
+validation_rules:
+  allow_null_text: false
+  allow_duplicate_rows: true
+  allow_empty_comments: false

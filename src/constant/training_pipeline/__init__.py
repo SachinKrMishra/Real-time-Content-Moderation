@@ -9,14 +9,14 @@ ARTIFACT_DIR = "artifacts"
 
 TEXT_COLUMN = "comment_text"
 
-TARGET_COLUMNS = (
+TARGET_COLUMNS = [
     "toxic",
     "severe_toxic",
     "obscene",
     "threat",
     "insult",
     "identity_hate"
-)
+]
 
 SCHEMA_FILE_PATH = os.path.join(
     "data_schema",
@@ -39,3 +39,12 @@ DATA_INGESTION_FEATURE_STORE_DIR: str = "feature_store"
 DATA_INGESTION_INGESTED_DIR:str = "ingested"
 DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO: float = 0.2
 RANDOM_STATE: int = 42
+
+'''
+Data Validation related constants.
+'''
+
+DATA_VALIDATION_DIR_NAME: str = "data_validation"
+DATA_VALIDATION_REPORT_DIR: str = "validation_report"
+DATA_VALIDATION_REPORT_FILE_NAME: str = "report.yaml"
+DATA_VALIDATION_STATUS_FILE_NAME: str = "validation_status.txt"
