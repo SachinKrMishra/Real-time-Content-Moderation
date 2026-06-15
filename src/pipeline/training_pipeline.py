@@ -6,14 +6,16 @@ from src.exception.exception import ModerationException
 
 from src.components.data_ingestion import DataIngestion
 from src.components.data_validation import DataValidation
+from src.components.data_transformation import DataTransformation
 
 from src.entity.config_entity import(
     TrainingPipelineConfig,
     DataIngestionConfig,
-    DataValidationConfig
+    DataValidationConfig,
+    DataTransformationConfig
 )
 
-from src.entity.artifact_entity import DataIngestionArtifact
+from src.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact, DataTransformationArtifact
 
 class TrainingPipeline:
     def __init__(self):
@@ -42,6 +44,33 @@ class TrainingPipeline:
             data_validation_artifact = (data_validation.initiate_data_validation())
             logging.info(f"Data Validation completed and artifacts : "f"{data_validation_artifact}")
             return data_validation_artifact
+
+        except Exception as e:
+            raise ModerationException(e, sys)
+
+    def start_data_transformation(self, data_ingestion_artifact: DataIngestionArtifact, data_validation_artifact: DataValidationArtifact):
+        try:
+
+            if not data_validation_artifact.validation_status:
+                raise Exception("Data validation failed. Cannot start transformation.")
+
+            data_transformation_config = DataTransformationConfig(training_pipeline_config=self.training_pipeline_config)
+            data_transformation = DataTransformation(
+                data_ingestion_artifact=data_ingestion_artifact,
+                data_validation_artifact=data_validation_artifact,
+                data_transformation_config=data_transformation_config
+            )
+
+            logging.info("Initiate Data Transformation")
+
+            data_transformation_artifact = (data_transformation.initiate_data_transformation())
+
+            logging.info(
+                f"Data Transformation completed and artifacts: "
+                f"{data_transformation_artifact}"
+            )
+
+            return data_transformation_artifact
 
         except Exception as e:
             raise ModerationException(e, sys)

@@ -82,3 +82,28 @@ class DataValidationConfig:
             self.data_validation_dir,
             training_pipeline.DATA_VALIDATION_STATUS_FILE_NAME
         )
+
+class DataTransformationConfig:
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
+
+        self.data_transformation_dir = os.path.join(
+            training_pipeline_config.artifact_dir,
+            training_pipeline.DATA_TRANSFORMATION_DIR_NAME
+        )
+
+        self.transformed_train_file_path = os.path.join(
+            self.data_transformation_dir,
+            training_pipeline.DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR,
+            training_pipeline.TRAIN_TRANSFORMED_FILE_NAME
+        )
+
+        self.transformed_test_file_path = os.path.join(
+            self.data_transformation_dir,
+            training_pipeline.DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR,
+            training_pipeline.TEST_TRANSFORMED_FILE_NAME
+        )
+
+        self.tokenizer_dir_path = os.path.join(
+            self.data_transformation_dir,
+            training_pipeline.TOKENIZER_DIR_NAME
+        )

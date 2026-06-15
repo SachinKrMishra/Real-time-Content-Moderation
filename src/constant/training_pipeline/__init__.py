@@ -28,6 +28,7 @@ TEST_FILE_NAME = "test.csv"
 TEST_LABEL_FILE_NAME = "test_labels.csv"
 
 NUM_LABELS = len(TARGET_COLUMNS)
+MODEL_NAME = "bert-base-uncased"
 
 '''
 Data Ingestion related constants.
@@ -48,3 +49,13 @@ DATA_VALIDATION_DIR_NAME: str = "data_validation"
 DATA_VALIDATION_REPORT_DIR: str = "validation_report"
 DATA_VALIDATION_REPORT_FILE_NAME: str = "report.yaml"
 DATA_VALIDATION_STATUS_FILE_NAME: str = "validation_status.txt"
+
+'''
+Data Transformation related constants
+'''
+
+DATA_TRANSFORMATION_DIR_NAME: str = "data_transformation"
+DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR = "transformed_data"
+TRAIN_TRANSFORMED_FILE_NAME = "train.csv"
+TEST_TRANSFORMED_FILE_NAME = "test.csv"
+TOKENIZER_DIR_NAME = "tokenizer"
